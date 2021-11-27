@@ -1,0 +1,10 @@
+MangaList: MyList.mlist
+Mangas:
+  - Manga: 11829876124202399068
+    Manga-Title: Vinland
+    Manga-SubTitle: Saga
+    Manga-Category: Action
+    Manga-Description: Dudes doing things
+    Manga-Language: PT-BR
+    Manga-TotalChapters: 200
+    Manga-ReadedChapters: 200

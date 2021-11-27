@@ -1,0 +1,6 @@
+[submodule "MangaList/vendor/yaml-cpp"]
+	path = MangaList/vendor/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp.git
+[submodule "MangaList/vendor/spdlog"]
+	path = MangaList/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
