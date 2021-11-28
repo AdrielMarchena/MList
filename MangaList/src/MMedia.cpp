@@ -1,23 +1,23 @@
 #include "core/pch.h"
-#include "MList.h"
+#include "MMedia.h"
 
 #include "uuid/uuid.h"
-
 namespace mlist
 {
-	MList::MList()
+	MMedia::MMedia()
 		:m_UUID(UUID())
 	{
 	}
 
-	Ref<MList> MList::CreateRefMList()
+	Ref<MMedia> MMedia::CreateRefMList()
 	{
-		return MakeRef<MList>();
+		return MakeRef<MMedia>();
 	}
 
-	Ref<MList> MList::CreateRefMList(const Ref<MList>& other)
+	Ref<MMedia> MMedia::CreateRefMList(const Ref<MMedia>& other)
 	{
-		auto ml = MakeRef<MList>();
+
+		auto ml = MakeRef<MMedia>();
 		ml->Title = other->Title;
 		ml->SubTitle = other->SubTitle;
 		ml->Category = other->Category;
