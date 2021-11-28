@@ -8,6 +8,7 @@
 #include <utility>
 #include <exception>
 #include <stdint.h>
+#include <ctime>
 
 #include <string>
 #include <stack>
@@ -21,6 +22,10 @@
 
 #include <sstream>
 #include <fstream>
+
+// Project headers
+#include "Debug/Instrumentor.h"
+#include "Log/Log.h"
 
 //#if defined MLIST_WINDOWS_BUILD
 //	#include <Windows.h>

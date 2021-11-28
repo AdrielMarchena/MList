@@ -1,11 +1,13 @@
 #include "core/pch.h"
 #include "Log/Log.h"
-
-#include "MList.h"
-#include "Serializer/MListSerializer.h"
+#include "Time/Date.h"
+#include "MMedia.h"
+#include "Serializer/MMediaSerializer.h"
 
 int main(int argv, char** argc)
 {
+	MLIST_PROFILE_BEGIN_SESSION("Profile", "Profile/Profile.json");
+
 	std::string error = mlist::Log::Init();
 	if (!error.empty())
 	{
@@ -13,8 +15,11 @@ int main(int argv, char** argc)
 		return EXIT_FAILURE;
 	}
 
+	std::string date_string = "09/12/1968";
+	mlist::Date date(date_string);
+
 	auto vlist = mlist::CreateMListVector();
-	mlist::MListSerializer serializer(vlist);
+	mlist::MMediaSerializer serializer(vlist);
 
 	if (serializer.Deserialize("MyList.mlist"))
 	{
@@ -33,7 +38,7 @@ int main(int argv, char** argc)
 		}
 	}
 
-	mlist::MList manga;
+	mlist::MMedia manga;
 
 	manga.Title = "Vinland";
 	manga.SubTitle = "Saga";
@@ -46,6 +51,8 @@ int main(int argv, char** argc)
 	vlist->push_back(manga);
 
 	serializer.Serialize("MyList.mlist");
+
+	MLIST_PROFILE_END_SESSION();
 
 	return EXIT_SUCCESS;
 }
