@@ -3,11 +3,11 @@
 #include <string>
 #include "core/core.h"
 #include "Time/Date.h"
+#include "Serializer/Reflection.h"
 namespace mlist
 {
-
 	class MMediaSerializer;
-	class MMedia
+	class MLIST_API MMedia
 	{
 	private:
 		uint64_t m_UUID = NULL;
@@ -19,13 +19,12 @@ namespace mlist
 		std::string Category = "Not specified";
 		std::string Description = "Not specified";
 		std::string Language = "Not specified";
-		std::string Authors = "Unamed Author"; //TODO: Make a vector
+		std::vector<std::string> Authors = { "Unamed Author" };
 		mlist::Date ReleaseDate = "01/01/1900";
 		mlist::Date BeginReadDate = "01/01/1900";
 		mlist::Date EndReadDate = "01/01/1900";
 		uint16_t TotalChapters = 1;
 		uint16_t ReadedChapters = 0;
-
 
 		MMedia();
 		MMedia(const MMedia&) = default;
@@ -35,7 +34,7 @@ namespace mlist
 		static Ref<MMedia> CreateRefMList();
 
 		/* Copy the content of a Ref MMedia to a new one */
-		static Ref<MMedia> CreateRefMList(const Ref<MMedia>& other);
+		//static Ref<MMedia> CreateRefMList(const Ref<MMedia>& other);
 
 		uint64_t GetUUID() const { return m_UUID; }
 
@@ -47,4 +46,23 @@ namespace mlist
 	{
 		return MakeRef< std::vector<mlist::MMedia>>();
 	}
+
+
 }
+//Idk, i will keep this here, maybe i try this again later
+DEFINE_TYPE(mlist::MMedia);
+
+BEGIN_ATTRIBUTES_FOR(mlist::MMedia);
+DEFINE_MEMBER(MediaType);
+DEFINE_MEMBER(Title);
+DEFINE_MEMBER(SubTitle);
+DEFINE_MEMBER(Category);
+DEFINE_MEMBER(Description);
+DEFINE_MEMBER(Language);
+DEFINE_MEMBER(Authors);
+DEFINE_MEMBER(ReleaseDate);
+DEFINE_MEMBER(BeginReadDate);
+DEFINE_MEMBER(EndReadDate);
+DEFINE_MEMBER(TotalChapters);
+DEFINE_MEMBER(ReadedChapters);
+END_ATTRIBUTES;

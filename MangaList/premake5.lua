@@ -21,7 +21,8 @@ project "MangaList"
 	{
 		"src/",
 		"%{IncludeDirectories.yaml}",
-		"%{IncludeDirectories.spdlog}"
+		"%{IncludeDirectories.spdlog}",
+		"%{IncludeDirectories.debugbreak}"
 	}
 
 	links

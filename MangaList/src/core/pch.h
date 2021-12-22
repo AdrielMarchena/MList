@@ -20,13 +20,17 @@
 #include <unordered_set>
 #include <unordered_map>
 
+//Add checks to see if we are in cpp-17
+#include <filesystem>
+
 #include <sstream>
 #include <fstream>
 
 // Project headers
 #include "Debug/Instrumentor.h"
 #include "Log/Log.h"
-
+#include "debugbreak.h"
+#include "assert.h"
 //#if defined MLIST_WINDOWS_BUILD
 //	#include <Windows.h>
 //#endif

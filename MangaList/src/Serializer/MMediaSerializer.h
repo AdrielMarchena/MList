@@ -4,7 +4,7 @@
 #include "MMEdia.h"
 namespace mlist
 {
-	class MMediaSerializer
+	class MLIST_API MMediaSerializer
 	{
 	private:
 		Ref<std::vector<MMedia>> m_MList;
@@ -15,6 +15,7 @@ namespace mlist
 
 		bool Serialize(const std::string& filepath);
 		bool Deserialize(const std::string& filepath);
+		bool CreateNewFile(const std::string& filepath);
 	};
 }
 

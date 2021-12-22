@@ -1,0 +1,33 @@
+MediaSequence: 7737310264951071651
+MediaList:
+  - Media: 13622754835251615596
+    Type: Book
+    Title: Life
+    SubTitle: SubLife
+    Category: Ukay
+    Description: A series of books based on bla bla bla, it is about the hero bla bla who gain powers throw horrific experiences that involves cocaine, the FBI, vietnam and a bunch of bananas
+    Language: PT-BR
+    Authors:
+      - Adriel Marchena
+      - Karl Marx
+      - Aquele cara que apanha no programa do ratinho
+    ReleaseDate: [12/08/1958, 1]
+    BeginReadDate: [16/08/2021, 1]
+    EndReadDate: [26/08/2021, 1]
+    TotalChapters: 12
+    ReadedChapters: 12
+  - Media: 13622754835251615596
+    Type: Manga
+    Title: Walking
+    SubTitle: ""
+    Category: Calm
+    Description: A history about a man walking
+    Language: PT-BR
+    Authors:
+      - Some
+      - One
+    ReleaseDate: [19/06/2001, 1]
+    BeginReadDate: [16/08/2011, 1]
+    EndReadDate: [20/08/2011, 1]
+    TotalChapters: 12
+    ReadedChapters: 12

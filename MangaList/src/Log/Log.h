@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/mlist_lib.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
@@ -7,7 +8,7 @@
 #include <string>
 namespace mlist
 {
-	class Log
+	class MLIST_API Log
 	{
 	private:
 		/* Logger for core information and debug */
