@@ -6,7 +6,12 @@
 
 #include "standalone/PasrseArgs.h"
 
+#define MLIST_NOT_IMPLEMENTED() MLIST_CORE_ASSERT_LOG(false, "This is not implemented yet")
+
+static inline void SerializeExample();
+static inline void DeserializeExample();
 static mlist::Ref<mlist::MMediaSerializer> s_MediaSerializer;
+mlist::ConsoleArgsParser s_Parser;
 
 void gInvalidateS(mlist::Ref<std::vector<mlist::MMedia>> media)
 {
@@ -38,37 +43,44 @@ void CreateNewFile(const std::string& filepath)
 //C
 void InsertMedia()
 {
-
+	MLIST_PROFILE_FUNCTION();
+	// Insert a media
+	MLIST_NOT_IMPLEMENTED();
 }
 
 //R
 void ReadMedia()
 {
-
+	MLIST_PROFILE_FUNCTION();
+	// Read all media and display on console
+	MLIST_NOT_IMPLEMENTED();
 }
 
 //U
 void UpdateMedia()
 {
-
+	MLIST_PROFILE_FUNCTION();
+	// Update existing media
+	MLIST_NOT_IMPLEMENTED();
 }
 
 //D
 void DeleteMedia()
 {
-
+	MLIST_PROFILE_FUNCTION();
+	// Delete existing media
+	MLIST_NOT_IMPLEMENTED();
 }
 
 int main(int argv, char** argc)
 {
 	MLIST_PROFILE_BEGIN_SESSION("Profile", "Profile/Profile.json");
 
-	mlist::ConsoleArgsParser parser;
-	{// Scope
+	{// Parser Scope
 		MLIST_PROFILE_SCOPE("Parsing console args");
-		parser.DisableRegistryMode();
-		parser.ParseArgs(argv,argc);
-	}
+		s_Parser.DisableRegistryMode();
+		s_Parser.ParseArgs(argv,argc);
+	}// Parser Scope
 
 	std::string error = mlist::Log::Init();
 	if (!error.empty())
@@ -77,6 +89,31 @@ int main(int argv, char** argc)
 		return EXIT_FAILURE;
 	}
 
+	if (s_Parser.GetFlag("read"))
+	{
+		ReadMedia();
+	}
+	else if (s_Parser.GetFlag("insert"))
+	{
+		InsertMedia();
+	}
+	else if (s_Parser.GetFlag("delete"))
+	{
+		DeleteMedia();
+	}
+	else if (s_Parser.GetFlag("update"))
+	{
+		UpdateMedia();
+	}
+
+	MLIST_PROFILE_END_SESSION();
+
+	return EXIT_SUCCESS;
+}
+
+
+static inline void SerializeExample()
+{
 	auto list = mlist::CreateMListVector();
 	mlist::MMedia media;
 
@@ -86,7 +123,7 @@ int main(int argv, char** argc)
 	media.Category = "Ukay";
 	media.Description = "A series of books based on bla bla bla, it is about the hero bla bla who gain powers throw horrific experiences that involves cocaine, the FBI, vietnam and a bunch of bananas";
 	media.Language = "PT-BR";
-	media.Authors = {"Adriel Marchena", "Karl Marx", "Aquele cara que apanha no programa do ratinho"};
+	media.Authors = { "Adriel Marchena", "Karl Marx", "Aquele cara que apanha no programa do ratinho" };
 
 	media.ReleaseDate = mlist::Date("12/08/1958");
 	media.BeginReadDate = mlist::Date("16/08/2021");
@@ -115,9 +152,11 @@ int main(int argv, char** argc)
 	list->push_back(media);
 
 	mlist::MMediaSerializer serializer(list);
-
 	serializer.Serialize("mList.mlist");
+}
 
+static inline void DeserializeExample()
+{
 	//Desirialize
 	//-----------
 	auto dlist = mlist::CreateMListVector();
@@ -144,8 +183,4 @@ int main(int argv, char** argc)
 		MLIST_USER_LOG_INFO("Media Total Chapters {0}", media.TotalChapters);
 		MLIST_USER_LOG_INFO("Media Readed Chapters {0}", media.ReadedChapters);
 	}
-
-	MLIST_PROFILE_END_SESSION();
-
-	return EXIT_SUCCESS;
 }
