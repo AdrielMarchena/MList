@@ -1,4 +1,4 @@
-# Base
+# MList :D
 
 This is the Bare bones of an idea, a program to save progress of some serial media 
 (like mangas, books or movies, something like this)

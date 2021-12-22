@@ -44,9 +44,12 @@ group "Dependencies"
 
 --Libs
 include "MangaList/vendor/yaml-cpp"
+include "GUI/vendor/glfw"		
+include "GUI/vendor/imgui"		
 
 group ""
 
 --Projects
 include "MangaList"
+include "GUI"
 --include "Sandbox"

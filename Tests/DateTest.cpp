@@ -51,5 +51,35 @@ namespace Tests
 			Assert::AreEqual(date_string, date.GetDate());
 		}
 
+		TEST_METHOD(TestDateParse_YYYY_DD_MM_NoDelimiter)
+		{
+			std::string date_string = "2000/26/12";
+			mlist::Date date(date_string, mlist::Date::DateFormat::YYYY_DD_MM, '-');
+			Assert::AreEqual(26.0f, (float)date.GetDay());
+			Assert::AreEqual(12.0f, (float)date.GetMonth());
+			Assert::AreEqual(2000.0f, (float)date.GetYear());
+			Assert::AreEqual(date_string, date.GetDate());
+		}
+
+		TEST_METHOD(TestDateParse_YYYY_DD_MM_LessThan2Delimiter)
+		{
+			std::string date_string = "2000/2612";
+			mlist::Date date(date_string, mlist::Date::DateFormat::YYYY_DD_MM, '/');
+			Assert::AreEqual(26.0f, (float)date.GetDay());
+			Assert::AreEqual(12.0f, (float)date.GetMonth());
+			Assert::AreEqual(2000.0f, (float)date.GetYear());
+			Assert::AreEqual(date_string, date.GetDate());
+		}
+
+		TEST_METHOD(TestDateParse_YYYY_DD_MM_GreaterThan2Delimiter)
+		{
+			std::string date_string = "2000//2612/";
+			mlist::Date date(date_string, mlist::Date::DateFormat::YYYY_DD_MM, '/');
+			Assert::AreEqual(26.0f, (float)date.GetDay());
+			Assert::AreEqual(12.0f, (float)date.GetMonth());
+			Assert::AreEqual(2000.0f, (float)date.GetYear());
+			Assert::AreEqual(date_string, date.GetDate());
+		}
+
 	};
 }
