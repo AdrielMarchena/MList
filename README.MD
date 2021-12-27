@@ -23,8 +23,10 @@ All dependencies are listed on de 'Dependencies.lua' file
 
 ## Usage
 
-The plan is to have to ways if using this, a stand alone .exe 
-and a API (maybe a GUi in the future)
+The plan is to have two ways if using this, a stand alone .exe 
+and a API (maybe a GUi in the future) 
+Update: i'm trying to make a GUI with glfw and ImGui, these two are working already, i just need to finish the MList API and
+then create the GUI to use it
 
 ## Contributing
 
